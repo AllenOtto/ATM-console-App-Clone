@@ -66,12 +66,29 @@ public class CardHolder
 
     void deposit(CardHolder currentUser)
     {
-        Console.WriteLine("How much $$ would you like to deposit? ");
+        Console.WriteLine("How much $$ would you like to deposit: ");
+        // Get amount to withdraw
         double deposit = Convert.ToDouble(Console.ReadLine());
+        // Update currentUser balance
         currentUser.Balance += deposit;
         Console.WriteLine($"Deposit successful. Your current balance is {currentUser.Balance}");
     }
 
+    void withdraw(CardHolder currentUser)
+    {
+        Console.WriteLine("How much money would you like to withdraw: ");
+        double withdrawal = Convert.ToDouble(Console.ReadLine());
+        // Check that user has more money than they want to withdraw
+        if(currentUser.Balance > withdrawal)
+        {
+            // Proceed with transaction. Update balance with withdrawal amount less than before
+            currentUser.Balance -= withdrawal;
+            Console.WriteLine("Withdrawal successful.");
+        } else
+        {
+            Console.WriteLine($"You have insufficient funds to withdraw {withdrawal}. Your current balance is {currentUser.Balance}");
+        }
+    }
 
 
 
