@@ -11,11 +11,11 @@ public class CardHolder
 
     // Create constructor for CardHolder assigning it its associated properties
     public CardHolder(string cardNum, int pin, string firstName, string lastName, double balance) {
-        this.cardNum = cardNum;
-        this.pin = pin;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.balance = balance;
+        this.CardNum = cardNum;
+        this.Pin = pin;
+        this.FirstName = firstName;
+        this.LastName = lastName;
+        this.Balance = balance;
     }
 
     // Create getters and setters for each Cardholder property 
@@ -52,6 +52,7 @@ public class CardHolder
     // Create main 
     public static void Main(string[] args)
     {
+        CardHolder cardHolder = new CardHolder("444", 1234, "Ann", "Wanjiru", 505345.50);
 
         void printOptions()
         {
@@ -61,17 +62,15 @@ public class CardHolder
             Console.WriteLine("3. Show Balance");
             Console.WriteLine("4. Exit");
         }
-
-        void deposit(CardHolder currentUser)
-        {
-            Console.WriteLine("How much $$ would you like to deposit? ");
-            double deposit = Double.Parse(Console.ReadLine());
-        }
     }
 
-
-
-
+    void deposit(CardHolder currentUser)
+    {
+        Console.WriteLine("How much $$ would you like to deposit? ");
+        double deposit = Convert.ToDouble(Console.ReadLine());
+        currentUser.Balance += deposit;
+        Console.WriteLine($"Deposit successful. Your current balance is {currentUser.Balance}");
+    }
 
 
 

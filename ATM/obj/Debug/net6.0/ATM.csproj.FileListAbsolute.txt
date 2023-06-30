@@ -1,0 +1,5 @@
+C:\Users\TechBomba\Documents\JS\# C#\Code\classesAndObjects\ATM\ATM\obj\Debug\net6.0\ATM.csproj.AssemblyReference.cache
+C:\Users\TechBomba\Documents\JS\# C#\Code\classesAndObjects\ATM\ATM\obj\Debug\net6.0\ATM.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\TechBomba\Documents\JS\# C#\Code\classesAndObjects\ATM\ATM\obj\Debug\net6.0\ATM.AssemblyInfoInputs.cache
+C:\Users\TechBomba\Documents\JS\# C#\Code\classesAndObjects\ATM\ATM\obj\Debug\net6.0\ATM.AssemblyInfo.cs
+C:\Users\TechBomba\Documents\JS\# C#\Code\classesAndObjects\ATM\ATM\obj\Debug\net6.0\ATM.csproj.CoreCompileInputs.cache
