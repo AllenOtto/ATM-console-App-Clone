@@ -49,10 +49,18 @@ public class CardHolder
         set { balance = value; }
     }
 
-    // Create main 
+    // Create main function
     public static void Main(string[] args)
     {
-        CardHolder cardHolder = new CardHolder("444", 1234, "Ann", "Wanjiru", 505345.50);
+        // Create a list of users of type CardHolder each having a card number, a pin number,
+        // a first and last name and an account balance
+        List<CardHolder> cardHolders = new List<CardHolder>();
+        cardHolders.Add(new CardHolder("4587456698525221", 1232, "Pamela", "Ombuds", 34540.20));
+        cardHolders.Add(new CardHolder("1254785412569875", 5698, "John", "Ondimu", 2365480.40));
+        cardHolders.Add(new CardHolder("2587569832547896", 1478, "Kelvin", "Karanja", 6012.23));
+        cardHolders.Add(new CardHolder("9856321478569874", 5890, "Elvis", "Gatimu", 23569875.08));
+        cardHolders.Add(new CardHolder("2452241789654755", 2365, "Nafula", "Mary", 33.03));
+        cardHolders.Add(new CardHolder("2358744589996211", 7854, "Lucy", "Wamuyu", 7890.62));
     }
 
     // Display options available to currentUser/CardHolder 
@@ -91,18 +99,8 @@ public class CardHolder
         }
     }
 
-    void getBalance()
+    void GetBalance(CardHolder currentUser)
     {
         Console.WriteLine($"Your current account balance is {currentUser.Balance}");
     }
-
-
-
-
-
-
-
-
-
-
 }
