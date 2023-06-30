@@ -53,18 +53,19 @@ public class CardHolder
     public static void Main(string[] args)
     {
         CardHolder cardHolder = new CardHolder("444", 1234, "Ann", "Wanjiru", 505345.50);
-
-        void printOptions()
-        {
-            Console.WriteLine("Please choose from one of the following options: ");
-            Console.WriteLine("1. Deposit");
-            Console.WriteLine("2. Withdraw");
-            Console.WriteLine("3. Show Balance");
-            Console.WriteLine("4. Exit");
-        }
     }
 
-    void deposit(CardHolder currentUser)
+    // Display options available to currentUser/CardHolder 
+    void PrintOptions()
+    {
+        Console.WriteLine("Please choose from one of the following options: ");
+        Console.WriteLine("1. Deposit");
+        Console.WriteLine("2. Withdraw");
+        Console.WriteLine("3. Show Balance");
+        Console.WriteLine("4. Exit");
+    }
+
+    void Deposit(CardHolder currentUser)
     {
         Console.WriteLine("How much $$ would you like to deposit: ");
         // Get amount to withdraw
@@ -74,7 +75,7 @@ public class CardHolder
         Console.WriteLine($"Deposit successful. Your current balance is {currentUser.Balance}");
     }
 
-    void withdraw(CardHolder currentUser)
+    void Withdraw(CardHolder currentUser)
     {
         Console.WriteLine("How much money would you like to withdraw: ");
         double withdrawal = Convert.ToDouble(Console.ReadLine());
@@ -90,7 +91,10 @@ public class CardHolder
         }
     }
 
-
+    void getBalance()
+    {
+        Console.WriteLine($"Your current account balance is {currentUser.Balance}");
+    }
 
 
 
