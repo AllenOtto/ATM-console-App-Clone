@@ -68,6 +68,7 @@ public class CardHolder
         string debitCardNum = "";
         CardHolder currentUser;
 
+        // Check if user has a valid card number
         while(true)
         {
             try
@@ -85,6 +86,29 @@ public class CardHolder
                 Console.WriteLine($"Card not recognized. Please try again. {e}");
             }
         }
+
+        // Check if PIN entered matches that of the user whose card number was used to return our currentUser object
+        Console.WriteLine("Please enter your pin: ");
+        int userPin = 0;
+
+        while (true)
+        {
+            try
+            {
+                // Fetch pin number from user parsing it into a string then storing it in userPin variable
+                userPin = int.Parse(Console.ReadLine());
+                
+                // Checked if user entered PIN number equals PIN of currentUser
+                if (currentUser.Pin == userPin) { break; }
+                else { Console.WriteLine("PIN error. Please try again."); }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"PIN error. Please try again. {e}");
+            }
+        }
+
+
     }
 
     // Display options available to currentUser/CardHolder
