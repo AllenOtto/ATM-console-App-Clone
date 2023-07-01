@@ -64,7 +64,7 @@ public class CardHolder
 
         // Prompt user
         Console.WriteLine("Welcome to SimpleATM.");
-        Console.WriteLine("Please insert your debit card: ");
+        Console.Write("Please insert your debit card: \n");
         string debitCardNum = "";
         CardHolder currentUser;
 
@@ -75,15 +75,16 @@ public class CardHolder
             {
                 // Fetch card number from user
                 debitCardNum = Console.ReadLine();
+                Console.WriteLine(" ==================== \n");
                 // Check for availability of user entered cardNumber in our db/list
                 // If present, return it the object that contains it, storing it in currentUser
                 currentUser = cardHolders.FirstOrDefault(arr => arr.CardNum == debitCardNum);
                 if(currentUser != null) { break; }
-                else { Console.WriteLine("Card not recognized. Please try again."); }
+                else { Console.WriteLine("Card not recognized. Please try again. \n"); }
             }
             catch (Exception e)
             {
-                Console.WriteLine($"Card not recognized. Please try again. {e}");
+                Console.WriteLine($"Card not recognized. Please try again. {e} \n");
             }
         }
 
@@ -97,18 +98,19 @@ public class CardHolder
             {
                 // Fetch pin number from user parsing it into a string then storing it in userPin variable
                 userPin = int.Parse(Console.ReadLine());
-                
+                Console.WriteLine(" ==================== \n");
+
                 // Checked if user entered PIN number equals PIN of currentUser
                 if (currentUser.Pin == userPin) { break; }
-                else { Console.WriteLine("PIN error. Please try again."); }
+                else { Console.WriteLine("PIN error. Please try again. \n"); }
             }
             catch (Exception e)
             {
-                Console.WriteLine($"PIN error. Please try again. {e}");
+                Console.WriteLine($"PIN error. Please try again. \n");
             }
         }
 
-        Console.WriteLine($"Welcome, {currentUser.FirstName} :) ");
+        Console.WriteLine($"Welcome, {currentUser.FirstName} :) \n");
         int option = 0;
 
         do
@@ -119,58 +121,69 @@ public class CardHolder
             {
                 // Get user choice
                 option = int.Parse(Console.ReadLine());
+                Console.WriteLine(" ==================== \n");
             } // Watch for any errors
-            catch (Exception e) { Console.WriteLine(e); }
+            catch { Console.WriteLine("Error"); }
 
             // Run relevant methods based on user choice.
-            if (option == 1) { currentUser.Deposit(currentUser); Console.WriteLine("Select another option: "); }
-            else if(option == 2) { currentUser.Withdraw(currentUser); Console.WriteLine("Select another option: "); }
-            else if(option == 3) { currentUser.GetBalance(currentUser); Console.WriteLine("Select another option: "); }
+            if (option == 1) { currentUser.Deposit(currentUser); Console.WriteLine("Select another option: \n"); }
+            else if(option == 2) { currentUser.Withdraw(currentUser); Console.WriteLine("Select another option: \n"); }
+            else if(option == 3) { currentUser.GetBalance(currentUser); Console.WriteLine("Select another option: \n"); }
             else if(option == 4) { break; }
             else { option = 0; }
         } // Keep running unless option equals 4
         while (option != 4);
-        Console.WriteLine($"Thank you, {currentUser.FirstName}. Have a nice day.");
+        Console.WriteLine($"Thank you, {currentUser.FirstName}. Have a nice day. \n");
     }
 
     // Display options available to currentUser/CardHolder
     void PrintOptions()
     {
-        Console.WriteLine("Please choose from one of the following options: ");
+        Console.WriteLine("Please choose from one of the following options: \n");
         Console.WriteLine("1. Deposit");
         Console.WriteLine("2. Withdraw");
         Console.WriteLine("3. Show Balance");
-        Console.WriteLine("4. Exit");
+        Console.WriteLine("4. Exit \n");
     }
 
     void Deposit(CardHolder currentUser)
     {
-        Console.WriteLine("How much $$ would you like to deposit: ");
+        Console.Write("How much $$ would you like to deposit: \n");
         // Get amount to withdraw
         double deposit = Convert.ToDouble(Console.ReadLine());
-        // Update currentUser balance
+        Console.WriteLine(" ==================== \n");
+        // Previous balance
+        double previousBalance = currentUser.Balance;
+        // Update currentUser balance to some newBalance
         currentUser.Balance += deposit;
-        Console.WriteLine($"Deposit successful. Your current balance is {currentUser.Balance}");
+        Console.WriteLine("Deposit successful.");
+        Console.WriteLine($"Your previous balance was {previousBalance}");
+        Console.WriteLine($"Your new balance is {currentUser.Balance} \n");
     }
 
     void Withdraw(CardHolder currentUser)
     {
-        Console.WriteLine("How much money would you like to withdraw: ");
+        Console.Write("How much money would you like to withdraw: \n");
         double withdrawal = Convert.ToDouble(Console.ReadLine());
         // Check that user has more money than they want to withdraw
         if(currentUser.Balance > withdrawal)
         {
+            // Balance before withdrawal
+            double previousBalance = currentUser.Balance;
+
             // Proceed with transaction. Update balance with withdrawal amount less than before
             currentUser.Balance -= withdrawal;
-            Console.WriteLine($"Withdrawal successful. Your current balance is: {currentUser.Balance}");
+            Console.WriteLine("Withdrawal successful.");
+            Console.WriteLine($"Your previous balance was: {previousBalance}");
+            Console.WriteLine($"Your current balance is: {currentUser.Balance} \n");
         } else
         {
-            Console.WriteLine($"You have insufficient funds to withdraw {withdrawal}. Your current balance is {currentUser.Balance}");
+            Console.WriteLine($"You have insufficient funds to withdraw {withdrawal}. Your current balance is {currentUser.Balance} \n");
         }
     }
 
     void GetBalance(CardHolder currentUser)
     {
-        Console.WriteLine($"Your current account balance is {currentUser.Balance}");
+        Console.WriteLine($"Your current account balance is {currentUser.Balance} \n");
     }
 }
