@@ -108,7 +108,29 @@ public class CardHolder
             }
         }
 
+        Console.WriteLine($"Welcome, {currentUser.FirstName} :) ");
+        int option = 0;
 
+        do
+        {
+            // Display our options
+            currentUser.PrintOptions();
+            try
+            {
+                // Get user choice
+                option = int.Parse(Console.ReadLine());
+            } // Watch for any errors
+            catch (Exception e) { Console.WriteLine(e); }
+
+            // Run relevant methods based on user choice.
+            if (option == 1) { currentUser.Deposit(currentUser); Console.WriteLine("Select another option: "); }
+            else if(option == 2) { currentUser.Withdraw(currentUser); Console.WriteLine("Select another option: "); }
+            else if(option == 3) { currentUser.GetBalance(currentUser); Console.WriteLine("Select another option: "); }
+            else if(option == 4) { break; }
+            else { option = 0; }
+        } // Keep running unless option equals 4
+        while (option != 4);
+        Console.WriteLine($"Thank you, {currentUser.FirstName}. Have a nice day.");
     }
 
     // Display options available to currentUser/CardHolder
@@ -140,7 +162,7 @@ public class CardHolder
         {
             // Proceed with transaction. Update balance with withdrawal amount less than before
             currentUser.Balance -= withdrawal;
-            Console.WriteLine("Withdrawal successful.");
+            Console.WriteLine($"Withdrawal successful. Your current balance is: {currentUser.Balance}");
         } else
         {
             Console.WriteLine($"You have insufficient funds to withdraw {withdrawal}. Your current balance is {currentUser.Balance}");
